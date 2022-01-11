@@ -1,0 +1,61 @@
+{% extends "AppCoder/base.html" %}
+{% load static %}
+
+{% block contenido2 %}
+<div class="masthead-heading text-uppercase"> Nuestros <br> Proveedores </div>
+{% endblock %}
+
+{% block contenido %}
+
+<!-- Buscar-->
+
+<h6>Buscar proveedor por ciudad</h6>
+<form action = "/AppCoder/buscarproveedor" method="GET">
+    <input type="text" name="ciudad" id="ciudad">
+    <input type="submit" class="btn btn-dark btn-sm active" value="Buscar">
+</form>
+
+<!---->
+
+        {% if formularioProductos.errors %}
+        <h2 style="color: red;">Error en el formulario</h2>
+        {% endif %}
+
+    <div class="p-3 mb-2 bg-light text-dark">
+        <form action="/AppCoder/productos" method="POST"> {% csrf_token %}
+
+                
+                <a href="{% url 'Proveedores' %}" class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Crear nuevo proveedor</a>
+                <hr>
+                <table class="table table-bordered table-info mt-5 text-center">
+                    <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Dirección</th>
+                          <th>Teléfono</th>
+                          <th>Ciudad</th>
+                          <th>Fecha de Alta</th>
+                          <th colspan="3">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>    
+                        {% for j in proveedores %}
+                          <tr>
+                              <th>{{j.nombre}}</th>
+                              <td>{{j.direccion}}</th>
+                              <td>{{j.telefono}}</td>
+                              <td>{{j.ciudad}}</th>
+                              <td>{{j.fechaAlta}}</td>
+                                  <td>
+                                      <a href="{% url 'EliminarProveedor' j.nombre %}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Eliminar</a>
+                                      <a href="{% url 'EditarProveedor' j.nombre %}" class="btn btn-warning btn-sm active" role="button" aria-pressed="true">Editar</a>
+                                      <a href="{% url 'DetalleProveedor' j.id %}" class="btn btn-success btn-sm active" role="button" aria-pressed="true">Ver mas</a>
+                                  </td>
+                          </tr>
+                          {% endfor %} 
+                      </tbody>
+                      </table>
+        </form>    
+        
+    </div>
+{% endblock %}

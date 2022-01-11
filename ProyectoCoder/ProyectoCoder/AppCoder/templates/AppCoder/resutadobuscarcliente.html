@@ -1,0 +1,45 @@
+{% extends "AppCoder/base.html" %}
+{% load static %}
+
+{% block contenido2 %}
+<div class="masthead-heading text-uppercase"> Nuestros <br> Clientes</div>
+{% endblock %}
+
+{% block contenido %}
+
+    <h6>Los clientes con la misma ciudad son:</h6>
+
+    {% if nombre %}
+
+        <ul>
+            <table class="table table-bordered table-info mt-5 text-center">
+                <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Dirección</th>
+                      <th>Teléfono</th>
+                      <th>Ciudad</th>
+                      <th>Vendedor</th>
+                      <th>Fecha de Alta</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                    {% for Clientes in nombre %}
+                        <tr>
+                            <th>{{Clientes.nombre}}</th>
+                            <td>{{Clientes.direccion}}</th>
+                            <td>{{Clientes.telefono}}</td>
+                            <td>{{Clientes.ciudad}}</th>
+                            <th>{{Clientes.Vendedor}}</td>
+                            <td>{{Clientes.fechaAlta}}</td>
+                        <tr>
+
+                        {% endfor %}
+                    </tbody>
+                    </table> 
+        </ul>
+
+    {% endif %}
+
+
+{% endblock %}

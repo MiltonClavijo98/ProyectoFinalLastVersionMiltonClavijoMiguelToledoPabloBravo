@@ -1,0 +1,43 @@
+{% extends "AppCoder/base.html" %}
+{% load static %}
+
+{% block contenido2 %}
+<div class="masthead-heading text-uppercase"> Nuestros <br> Proveedores</div>
+{% endblock %}
+
+{% block contenido %}
+
+    <h6>Los proveedores con la misma ciudad son:</h6>
+
+    {% if nombre %}
+
+        <ul>
+            <table class="table table-bordered table-info mt-5 text-center">
+                <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Dirección</th>
+                      <th>Teléfono</th>
+                      <th>Ciudad</th>
+                      <th>Fecha de Alta</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                    {% for Proveedores in nombre %}
+                        <tr>
+                            <th>{{Proveedores.nombre}}</th>
+                            <td>{{Proveedores.direccion}}</th>
+                            <td>{{Proveedores.telefono}}</td>
+                            <td>{{Proveedores.ciudad}}</th>
+                            <td>{{Proveedores.fechaAlta}}</td>
+                        <tr>
+
+                        {% endfor %}
+                    </tbody>
+                    </table> 
+        </ul>
+
+    {% endif %}
+
+
+{% endblock %}

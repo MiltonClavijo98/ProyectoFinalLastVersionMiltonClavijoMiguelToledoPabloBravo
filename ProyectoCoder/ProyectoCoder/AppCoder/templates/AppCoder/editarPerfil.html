@@ -1,0 +1,33 @@
+{% extends "AppCoder/base.html" %}
+{% load static %}
+
+{% block contenido2 %}
+<div class="masthead-heading text-uppercase">Login</div>
+{% endblock %}
+
+{% block contenido %}
+    
+    <div class="p-3 mb-2 bg-light text-dark">
+        <br>
+        <br>
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <table>
+                {{ miFormulario.as_table }}
+            </Table>
+            
+            <input class="btn btn-dark btn-sm active" type="submit" value="Enviar">
+            
+        </form>
+        
+    </div>
+{% endblock %}
+
+<table style="margin-left: 500px;">
+    {{ formularioProductos.as_table }}
+
+</table>
+
+<input style="margin-left: 567px;" type="submit", value="Enviar">
